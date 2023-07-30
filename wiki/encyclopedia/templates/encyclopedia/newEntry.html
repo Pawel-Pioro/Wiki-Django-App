@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Entry
+{% endblock %}
+
+{% block body %}
+
+<h1>Create New Entry</h1>
+
+{% if existing %}
+<div style="color:red;">
+    This entry exists. You can edit it in its page.
+</div>
+{% endif %}
+<br>
+<div class="form-group">
+    <form action="{% url 'newEntry' %}" method = "post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type=submit>
+    </form>
+</div>
+{% endblock %}
